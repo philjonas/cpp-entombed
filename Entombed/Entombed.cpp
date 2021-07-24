@@ -63,7 +63,7 @@ void Entombed::rowGen(std::vector<unsigned int> &lastrows) {
 	// postprocessing condition2
 	// instead of all 12 rows, get only the last 7
 	std::vector<unsigned int> history2;
-	int first = last_index - 6;
+	int first = ((int)last_index) - 6;
 	if (first < 0) first = 0;
 	for (size_t i = first; i <= last_index; i++)
 	{
@@ -100,7 +100,7 @@ std::string Entombed::render_line(unsigned int row) {
 	}
 	std::string PF012 = "X" + PF12;
 	std::string mirrorPF012 = "";
-	for (int n = PF012.length() - 1; n >= 0; n--) {
+	for (int n = ((int) PF012.length()) - 1; n >= 0; n--) {
 		mirrorPF012.push_back(PF012[n]);
 	}
 	return PF012 + mirrorPF012;
