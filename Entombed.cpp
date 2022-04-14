@@ -47,14 +47,18 @@ void Entombed::rowGen(std::vector<unsigned int> &lastrows) {
 
 	// postprocessing condition 1
 	std::vector<unsigned int> history;
-	for (auto b : lastrows) {
-		history.push_back(b & 0xf0);
+	for (size_t i = 0; i < lastrows.size(); i++)
+	{
+		history.push_back(lastrows.at(i) & 0xf0);
 	}
+
 	if (!isZeroPresent(history)) {
 		unsigned int hsum = 0;
-		for (auto b : history) {
-			hsum += b & 0x80;
+		for (size_t i = 0; i < history.size(); i++)
+		{
+			hsum += history.at(i) & 0x80;
 		}
+		
 		if (hsum == 0) {
 			lastrows.at(last_index) = 0;
 		}
@@ -75,8 +79,9 @@ void Entombed::rowGen(std::vector<unsigned int> &lastrows) {
 			comparator = lastrows.at(last_index - 8);
 		}
 		unsigned int csum = 0;
-		for (auto b : history2) {
-			csum += (b & 1);
+		for (size_t i = 0; i < history2.size(); i++)
+		{
+			csum += (history2.at(i) & 1);
 		}
 		unsigned int cmult = (comparator & 1) * 7;
 		if (csum == cmult) {
@@ -107,8 +112,9 @@ std::string Entombed::render_line(unsigned int row) {
 }
 
 bool Entombed::isZeroPresent(std::vector<unsigned int> lastrows) {
-	for (auto b : lastrows) {
-		if (b == 0) return true;
+	for (size_t i = 0; i < lastrows.size(); i++)
+	{
+		if (lastrows.at(i) == 0) return true;
 	}
 	return false;
 }

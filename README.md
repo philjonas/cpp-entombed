@@ -7,3 +7,8 @@ https://github.com/aycock/entombed
 
 More on the original game here:
 https://en.wikipedia.org/wiki/Entombed_(Atari_2600)
+
+ ## To run this on a MacOS:
+ - `brew install sfml`
+ - `./comp.sh`
+ - `./entombed`
