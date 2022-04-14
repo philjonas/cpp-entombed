@@ -19,7 +19,11 @@ int main()
 		{
 			std::cout << m.render_line(rows.at(i)) << std::endl;
 		}
-		system("pause");
+		#ifdef _WIN32 || _WIN64
+			system("pause");
+		#else
+			system("read -n1");
+		#endif
 	}
 
 	return 0;
